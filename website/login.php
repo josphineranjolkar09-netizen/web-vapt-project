@@ -1,4 +1,8 @@
 <?php
+
+
+session_start();
+
 include "db.php";
 
 $message = "";
@@ -8,15 +12,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    // Prepared statement to prevent SQL Injection
+    $stmt = $conn->prepare(
+        "SELECT * FROM users WHERE username = ? AND password = ?"
+    );
 
-    $result = mysqli_query($conn, $sql);
+    $stmt->bind_param("ss", $username, $password);
 
-    if (mysqli_num_rows($result) > 0) {
-        $message = "Login successful!";
-    } else {
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+
+if ($result->num_rows > 0) {
+    $_SESSION["username"] = $username;
+    $message = "Login successful!";
+}
+
+
+else {
         $message = "Invalid username or password.";
     }
+
+    $stmt->close();
 }
 ?>
 
@@ -48,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <br>
+
     <a href="index.php">Back to Home</a><br>
     <a href="register.php">Create an Account</a>
 
