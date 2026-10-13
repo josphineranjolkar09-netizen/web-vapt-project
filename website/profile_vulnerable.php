@@ -11,7 +11,7 @@ $username = $_GET["username"] ?? "";
 
     <h1>User Profile</h1>
 
-    <p>Welcome, <?php echo $username; ?></p>
+<p>Welcome, <?php echo htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); ?></p>
 
     <br>
     <a href="index.php">Back to Home</a>

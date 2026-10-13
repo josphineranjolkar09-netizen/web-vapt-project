@@ -1,0 +1,27 @@
+OWASP A09 - Security Logging and Monitoring Failures
+Practical: Failed Login Event Logging
+
+Objective:
+Verify that the web application records a failed-login event.
+
+Test:
+Submitted invalid test credentials to login.php over HTTPS.
+
+Observed:
+Apache access log recorded the POST request.
+PHP/Apache error log recorded:
+A09 audit: Failed login attempt.
+
+Result:
+The application-level audit message was successfully recorded.
+
+Remediation and improvements:
+Use structured authentication audit events.
+Never log passwords or session tokens.
+Record useful metadata securely, restrict log access,
+protect logs from tampering, and monitor repeated failures.
+Test alerting and retention separately.
+
+Limitation:
+This test confirms event logging only. It does not demonstrate
+centralized monitoring, alerting, or complete A09 compliance.

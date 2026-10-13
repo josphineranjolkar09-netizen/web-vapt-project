@@ -1,0 +1,31 @@
+OWASP A08 - Software and Data Integrity Failures
+Practical: SHA-256 File Integrity Verification
+
+Objective:
+Detect unexpected changes to a file using SHA-256 checksums.
+
+Test file:
+website/integrity_test.txt
+
+Original SHA-256:
+d763fd0515297cada5fcd442104a4cb60f9c5171043224a4ca05798829e368be
+
+Modified SHA-256:
+13c4d8af6349c9c6a48cb9c29c783bb6f71eb7a3b084f7d2bdc955ab4d78eb5f
+
+Verification before further modification:
+integrity_test.txt: OK
+
+Verification after further modification:
+integrity_test.txt: FAILED
+
+Result:
+The checksum comparison detected a change to the test file.
+
+Remediation:
+Keep trusted reference hashes protected from unauthorized changes.
+Use digital signatures or authenticated integrity checks where appropriate.
+
+Note:
+This practical demonstrates file integrity verification. It does not
+by itself establish that an OWASP A08 vulnerability exists in the website.

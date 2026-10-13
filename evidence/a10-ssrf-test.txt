@@ -1,0 +1,33 @@
+# A10: Server-Side Request Forgery (SSRF)
+
+## Objective
+
+Demonstrate SSRF by allowing a user to provide a URL that the server fetches, then verify a destination-allowlist mitigation.
+
+## Vulnerable Test
+
+* File: `website/ssrf_vulnerable.php`
+* Test URL: `http://127.0.0.1/`
+* Result: The server returned the local Apache default page HTML.
+
+## Fixed Test
+
+* File: `website/ssrf_fixed.php`
+* Approved URL: `http://127.0.0.1/`
+* Result: The server returned the Apache HTML.
+* Unapproved URL: `https://example.com/`
+* Result: The application displayed a blocked message without fetching the URL.
+
+## Risk
+
+Unrestricted server-side URL fetching can allow attackers to target internal services or other resources reachable from the server.
+
+## Remediation
+
+Use a strict allowlist of approved destinations, validate URLs and resolved IP addresses, block loopback and private network addresses unless explicitly required, and prevent redirects from bypassing validation.
+
+## Conclusion
+
+The vulnerable and fixed lab tests behaved as expected. The fixed demonstration blocked an unapproved URL before making a request.
+
+Note: The fixed lab allows loopback only for demonstration. A production application should not permit loopback unless there is a specific, controlled requirement.

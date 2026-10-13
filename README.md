@@ -25,7 +25,7 @@ The assessment includes:
 ### VAPT Machine
 
 * Kali Linux
-* IP Address: 192.168.180.129
+* IP Address: 192.168.180.132
 
 ### Web Server
 
@@ -197,6 +197,29 @@ The final project will include:
 9. Retesting results
 10. Final VAPT report
 11. Project documentation
+
+
+
+## OWASP Top 10 Coverage
+
+This project contains practical demonstrations of selected web application security risks, including vulnerable examples and corresponding mitigations where implemented.
+
+* **A01 — Broken Access Control:** IDOR vulnerable and fixed demonstrations.
+* **A02 — Cryptographic Failures:** Vulnerable and fixed cryptographic handling demonstrations.
+* **A03 — Injection:** SQL injection testing and secure login handling.
+* **A04 — Insecure Design:** Discount validation vulnerable and fixed demonstrations.
+* **A05 — Security Misconfiguration:** Security headers and configuration checks.
+* **A06 — Vulnerable and Outdated Components:** Reconnaissance and component/version scanning; document specific findings and evidence where available.
+* **A07 — Identification and Authentication Failures:** Login, session management, and logout testing.
+* **A08 — Software and Data Integrity Failures:** SHA-256 file integrity verification.
+* **A09 — Security Logging and Monitoring Failures:** Failed-login event logging demonstration.
+* **A10 — Server-Side Request Forgery (SSRF):** Vulnerable URL fetching and allowlist-based mitigation.
+
+**Scope note:** These are educational lab demonstrations, not a claim that every possible vulnerability in each category has been exhaustively tested. Refer to the evidence and assessment report for the tests actually performed and their results.
+
+
+
+
 
 ## Disclaimer
 

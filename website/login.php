@@ -1,7 +1,15 @@
 <?php
 
 
+session_set_cookie_params([
+    'httponly' => true,
+    'samesite' => 'Lax',
+    'secure' => true,
+    'path' => '/'
+]);
+
 session_start();
+
 
 include "db.php";
 
@@ -24,15 +32,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
 
-if ($result->num_rows > 0) {
-    $_SESSION["username"] = $username;
-    $message = "Login successful!";
+if ($result->num_rows > 0)
+{
+    $user = $result->fetch_assoc();
+
+    session_regenerate_id(true);
+
+    $_SESSION["user_id"] = $user["id"];
+    $_SESSION["username"] = $user["username"];
+
+    header("Location: dashboard.php");
+    exit;
 }
 
-
 else {
-        $message = "Invalid username or password.";
-    }
+    error_log("A09 audit: Failed login attempt.");
+
+    $message = "Invalid username or password.";
+}
 
     $stmt->close();
 }

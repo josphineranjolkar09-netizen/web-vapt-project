@@ -1,1 +1,8 @@
 website/db.php
+website/login.php.a09-backup
+website/ssrf_vulnerable.php.a10-backup
+website/uploads/*
+website/safe_uploads/*
+website/check_users.php
+website/integrity_test.txt
+website/integrity_test.sha256
